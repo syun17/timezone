@@ -8,10 +8,10 @@ import java.util.TimeZone;
 public class MapPanel extends JPanel {
 
     /** この地図画像の中央に来る経度（日本の標準時子午線＝東経135°） */
-    private static final double CENTER_LON_DEG = 135.0;
+    private static final double CENTER_LON_DEG = 120.0;
 
     /** マーカーの描画半径 */
-    private static final int DOT_R = 6;
+    private static final int DOT_R = 3;
 
     /** 背景画像 */
     private final Image mapImg;
@@ -24,7 +24,7 @@ public class MapPanel extends JPanel {
 
     public MapPanel() {
         // プロジェクトルートに置いた日本中心の地図画像（Clock.png）を読み込む
-        mapImg   = new ImageIcon("Clock.png").getImage();
+        mapImg   = new ImageIcon("img/Map3.png").getImage();
         imgWidth = mapImg.getWidth(null);
         imgHeight = mapImg.getHeight(null);
 
@@ -62,18 +62,20 @@ public class MapPanel extends JPanel {
         // 修正する
         // マーカー描画（経度→X 座標：日本中心補正）
         if (!Double.isNaN(markerLonDeg)) {
-            // 中心経度を基準に 0～1 の範囲へ折り畳む
-            double shifted = markerLonDeg - CENTER_LON_DEG + 180.0;
-            shifted = (shifted % 360 + 360) % 360;        // 常に 0～360
-            double xRatio = shifted / 360.0;              // 0.0～1.0
 
-            int x = (int) (xRatio * imgWidth) + x0;       // 画像内 → パネル内
-            int y = y0 + imgHeight / 2;                   // 緯度 0° ≒ 画像縦中央
+            // 座標取得
+            int[] coordinates = Coordinate.getCoordinate("");
+            int lon = coordinates[0];
+            int lat = coordinates[1];
+
+            //画像サイズに合わせて座標を変換
+            lon = lon * imgWidth / 360;
+            lat = lat * imgHeight / 180;
 
             g.setColor(Color.RED);
-            g.fillOval(x - DOT_R, y - DOT_R, DOT_R * 2, DOT_R * 2);
+            g.fillOval(lon - DOT_R, lat - DOT_R, DOT_R * 2, DOT_R * 2);
             g.setColor(Color.BLACK);
-            g.drawOval(x - DOT_R, y - DOT_R, DOT_R * 2, DOT_R * 2);
+            g.drawOval(lon - DOT_R, lat - DOT_R, DOT_R * 2, DOT_R * 2);
         }
     }
 }
