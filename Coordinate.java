@@ -10,8 +10,8 @@ public class Coordinate {
     public static int[] getCoordinate(String city) {
         int leftX = 30;
         int[] coordinates = new int[2];
-        double lon = 151.0; // 経度
-        double lat = -33.0; // 緯度
+        double lon = 139.0; // 経度
+        double lat = 35.0; // 緯度
 
         // 経度のデータが-180~180と仮定0~360を返す
         if (lon >= -leftX) {

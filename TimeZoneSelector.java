@@ -23,7 +23,6 @@ public class TimeZoneSelector extends JPanel {
             String selected = (String) comboBox.getSelectedItem();
             TimeZone zone = TimeZone.getTimeZone(selected);
             clockPanel.setTimeZone(zone);    // 時計ラベル更新
-            mapPanel.setTimeZone(zone);      // 地図マーカー更新 ←★
         });
 
         add(comboBox);
