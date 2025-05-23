@@ -58,6 +58,8 @@ public class MapPanel extends JPanel {
         int y0 = (getHeight() - imgHeight) / 2;
         g.drawImage(mapImg, x0, y0, this);
 
+
+        // 修正する
         // マーカー描画（経度→X 座標：日本中心補正）
         if (!Double.isNaN(markerLonDeg)) {
             // 中心経度を基準に 0～1 の範囲へ折り畳む
