@@ -1,6 +1,9 @@
+package View;
 import javax.swing.*;
+
+import Controller.Coordinate;
+
 import java.awt.*;
-import java.util.TimeZone;
 
 /**
  * 世界地図（日本中心画像）上に選択タイムゾーンの位置をマーキングするパネル
@@ -16,6 +19,8 @@ public class MapPanel extends JPanel {
     /** 背景画像の実サイズ */
     private final int imgWidth, imgHeight;
 
+    private static String searchCity = "";
+
 
     public MapPanel() {
         // プロジェクトルートに置いた日本中心の地図画像（Clock.png）を読み込む
@@ -26,6 +31,11 @@ public class MapPanel extends JPanel {
         // パネルがレイアウトで潰れないように実画像サイズを希望
         setPreferredSize(new Dimension(imgWidth, imgHeight));
 
+    }
+
+    public void setMap(String city) {
+        searchCity = city;
+        repaint();
     }
 
     @Override
@@ -39,7 +49,7 @@ public class MapPanel extends JPanel {
         
 
         // 座標取得
-        int[] coordinates = Coordinate.getCoordinate("");
+        int[] coordinates = Coordinate.getCoordinate(searchCity);
         int lon = coordinates[0];
         int lat = coordinates[1];
 
