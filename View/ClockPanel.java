@@ -1,3 +1,4 @@
+package View;
 import javax.swing.*;
 import java.awt.*;
 import java.text.SimpleDateFormat;
@@ -33,7 +34,7 @@ public class ClockPanel extends JPanel {
         selectedZone = TimeZone.getDefault();
 
         // 時間更新タイマー（1秒ごと）
-        Timer timer = new Timer(1000, e -> updateTime());
+        Timer timer = new Timer(1000, _ -> updateTime());
         timer.start();
     }
 

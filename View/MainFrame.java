@@ -1,3 +1,4 @@
+package View;
 import javax.swing.*;
 import java.awt.*;
 
@@ -29,7 +30,4 @@ public class MainFrame extends JFrame {
         setVisible(true); // ウィンドウ表示
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(MainFrame::new);
-    }
 }
