@@ -24,7 +24,7 @@ public class TimeZoneSelector extends JPanel {
         comboBox.setFont(new Font("SansSerif", Font.PLAIN, 16));
         comboBox.setSelectedItem(TimeZone.getDefault().getID());
 
-        comboBox.addActionListener(_ -> {
+        comboBox.addActionListener(e -> {
             String selected = (String) comboBox.getSelectedItem();
             TimeZone zone = TimeZone.getTimeZone(selected);
             clockPanel.setTimeZone(zone);    // 時計ラベル更新
