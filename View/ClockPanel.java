@@ -34,7 +34,7 @@ public class ClockPanel extends JPanel {
         selectedZone = TimeZone.getDefault();
 
         // 時間更新タイマー（1秒ごと）
-        Timer timer = new Timer(1000, _ -> updateTime());
+        Timer timer = new Timer(1000, e -> updateTime());
         timer.start();
     }
 
