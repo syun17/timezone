@@ -16,7 +16,8 @@ public class City {
             new City("America/New_York", -74.0060, 40.7128),
             new City("Europe/London", -0.1276, 51.5074),
             new City("Australia/Sydney", 151.2093, -33.8688),
-            new City("Europe/Paris", 2.3522, 48.8566)
+            new City("Europe/Paris", 2.3522, 48.8566),
+            new City("America/Los_Angeles", -118.2437, 34.0522),
         };
     }
 
